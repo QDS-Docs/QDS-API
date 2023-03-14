@@ -1,89 +1,99 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/slatedocs/img/master/logo-slate.png" alt="Slate: API Documentation Generator" width="226">
-  <br>
-  <a href="https://github.com/slatedocs/slate/actions?query=workflow%3ABuild+branch%3Amaster"><img src="https://github.com/slatedocs/slate/workflows/Build/badge.svg?branch=master" alt="Build Status"></a>
-</p>
+---
+title: BEX REST API Documentation
 
-<p align="center">Slate helps you create beautiful, intelligent, responsive API documentation.</p>
+language_tabs: # must be one of https://git.io/vQNgJ
+  - json
+  - javascript
+  - csharp
 
-<p align="center"><img src="https://raw.githubusercontent.com/slatedocs/img/master/screenshot-slate.png" width=700 alt="Screenshot of Example Documentation created with Slate"></p>
+toc_footers:
+  - <a href='https://bex.co.za/signup'>Open a BEX account</a>
+  - <a href='https://bex.co.za/quick-track'>Track a shipment</a>
+  - <a href='https://bex.co.za/about'>About us</a>
 
-<p align="center"><em>The example above was created with Slate. Check it out at <a href="https://slatedocs.github.io/slate">slatedocs.github.io/slate</a>.</em></p>
 
-Features
-------------
+includes:
+  - login
+  - tracking
+  - quoting
+  - waybill
+  - webhooks
 
-* **Clean, intuitive design** — With Slate, the description of your API is on the left side of your documentation, and all the code examples are on the right side. Inspired by [Stripe's](https://stripe.com/docs/api) and [PayPal's](https://developer.paypal.com/webapps/developer/docs/api/) API docs. Slate is responsive, so it looks great on tablets, phones, and even in print.
+search: true
+---
 
-* **Everything on a single page** — Gone are the days when your users had to search through a million pages to find what they wanted. Slate puts the entire documentation on a single page. We haven't sacrificed linkability, though. As you scroll, your browser's hash will update to the nearest header, so linking to a particular point in the documentation is still natural and easy.
+# Welcome to our DOCS site
 
-* **Slate is just Markdown** — When you write docs with Slate, you're just writing Markdown, which makes it simple to edit and understand. Everything is written in Markdown — even the code samples are just Markdown code blocks.
+Here at BEX we frequently develop and publish new API’s to assist our customers who wish to gain deeper control and visibility into their courier processes.
 
-* **Write code samples in multiple languages** — If your API has bindings in multiple programming languages, you can easily put in tabs to switch between them. In your document, you'll distinguish different languages by specifying the language name at the top of each code block, just like with GitHub Flavored Markdown.
+These API’s allow for direct integration into our courier platform, allowing data to be read and created using requests in JSON format.
+Couple this with our token based Authentication methods and standard HTTP verbs (which are understood by most HTTP clients) you have the capability to orchestrate and manage a number of processes within the courier environment.
 
-* **Out-of-the-box syntax highlighting** for [over 100 languages](https://github.com/jneen/rouge/wiki/List-of-supported-languages-and-lexers), no configuration required.
+We hope that you will build something great and benefit from integrating with our courier API’s.
 
-* **Automatic, smoothly scrolling table of contents** on the far left of the page. As you scroll, it displays your current position in the document. It's fast, too. We're using Slate at TripIt to build documentation for our new API, where our table of contents has over 180 entries. We've made sure that the performance remains excellent, even for larger documents.
+We want your courier journey to be pain-free - If you run into any difficulties, or perhaps you have some suggestions for us, please do not hesitate to <a href="mailto:it@bex.co.za?subject=Please%20help%20me%20to%20integrate%20with%20you">reach out</a> and we will gladly work with you.
 
-* **Let your users update your documentation for you** — By default, your Slate-generated documentation is hosted in a public GitHub repository. Not only does this mean you get free hosting for your docs with GitHub Pages, but it also makes it simple for other developers to make pull requests to your docs if they find typos or other problems. Of course, if you don't want to use GitHub, you're also welcome to host your docs elsewhere.
+# Requirements
 
-* **RTL Support** Full right-to-left layout for RTL languages such as Arabic, Persian (Farsi), Hebrew etc.
+To make use of our API integration we require the following:
 
-Getting started with Slate is super easy! Simply press the green "use this template" button above and follow the instructions below. Or, if you'd like to check out what Slate is capable of, take a look at the [sample docs](https://slatedocs.github.io/slate/).
+1. A valid <a href="https://bex.co.za/signup">shipping account</a> with BEX.
+1. The creation of an integration user identity under which you will transact over the API’s
+1. For security sensitive data requests, a valid <a href="#login">token</a>.
 
-Getting Started with Slate
-------------------------------
+**Note:** If you have multiple shipping accounts you are not required to transact under multiple integration identities (“tokens”). Our platform supports the assignment of multiple shipping accounts to a _single_ token, making integration across multiple business units easier.
 
-To get started with Slate, please check out the [Getting Started](https://github.com/slatedocs/slate/wiki#getting-started)
-section in our [wiki](https://github.com/slatedocs/slate/wiki).
+<aside class="notice">
+You may access the API over HTTP or HTTPS, but HTTPS is recommended if you wish to keep things secure.
+</aside>
 
-We support running Slate in three different ways:
-* [Natively](https://github.com/slatedocs/slate/wiki/Using-Slate-Natively)
-* [Using Vagrant](https://github.com/slatedocs/slate/wiki/Using-Slate-in-Vagrant)
-* [Using Docker](https://github.com/slatedocs/slate/wiki/Using-Slate-in-Docker)
+# Request/Response Format
+The default response format is **JSON**. Requests with a message-body use plain JSON to set resource attributes.
 
-Companies Using Slate
----------------------------------
+Successful requests will return a `200 OK` HTTP status.
 
-* [NASA](https://api.nasa.gov)
-* [Sony](http://developers.cimediacloud.com)
-* [Best Buy](https://bestbuyapis.github.io/api-documentation/)
-* [Travis-CI](https://docs.travis-ci.com/api/)
-* [Greenhouse](https://developers.greenhouse.io/harvest.html)
-* [WooCommerce](http://woocommerce.github.io/woocommerce-rest-api-docs/)
-* [Dwolla](https://docs.dwolla.com/)
-* [Clearbit](https://clearbit.com/docs)
-* [Coinbase](https://developers.coinbase.com/api)
-* [Parrot Drones](http://developer.parrot.com/docs/bebop/)
-* [Scale](https://docs.scaleapi.com/)
+# Errors
 
-You can view more in [the list on the wiki](https://github.com/slatedocs/slate/wiki/Slate-in-the-Wild).
+You can find the errors specific to each API endpoint under its dedicated API topic.
 
-Questions? Need Help? Found a bug?
---------------------
+We communicate API errors in the _ex:_ ( _ex_ ception ) attribute found in the base object of our API responses.
 
-If you've got questions about setup, deploying, special feature implementation in your fork, or just want to chat with the developer, please feel free to [start a thread in our Discussions tab](https://github.com/slatedocs/slate/discussions)!
+**A word on success flags:**
+We return `200 OK` http status responses for **ALL** requests that make it to our server, **even if we run into an error when processing your request.**
 
-Found a bug with upstream Slate? Go ahead and [submit an issue](https://github.com/slatedocs/slate/issues). And, of course, feel free to submit pull requests with bug fixes or changes to the `dev` branch.
+For API submissions that result in a processing error (read _validation and business logic/”elegant” type errors_) we include an attribute in the API response titled _ex:_ where we communicate the reason for the processing failure.
 
-Contributors
---------------------
+A response could look as follows:
 
-Slate was built by [Robert Lord](https://lord.io) while at [TripIt](https://www.tripit.com/). The project is now maintained by [Matthew Peveler](https://github.com/MasterOdin) and [Mike Ralphson](https://github.com/MikeRalphson).
+* HTTP status code: `200 OK`
+* API response: `"ex": "Account number is not registered for transactions with this token."`
 
-Thanks to the following people who have submitted major pull requests:
+![200 OK with error ex:](200OK-response-with-ex-error.jpg)
+_Above: Note the **200 OK** status whilst receiving an error **"ex":** response_
 
-- [@chrissrogers](https://github.com/chrissrogers)
-- [@bootstraponline](https://github.com/bootstraponline)
-- [@realityking](https://github.com/realityking)
-- [@cvkef](https://github.com/cvkef)
+In instances where there is a technical breakdown in the processing of the API request, such as querying the wrong endpoint address, you will receive the appropriate http status code such as a `404 error`.
 
-Also, thanks to [Sauce Labs](http://saucelabs.com) for sponsoring the development of the responsive styles.
+# Parameters
 
-Special Thanks
---------------------
-- [Middleman](https://github.com/middleman/middleman)
-- [jquery.tocify.js](https://github.com/gfranko/jquery.tocify.js)
-- [middleman-syntax](https://github.com/middleman/middleman-syntax)
-- [middleman-gh-pages](https://github.com/edgecase/middleman-gh-pages)
-- [Font Awesome](http://fortawesome.github.io/Font-Awesome/)
+Almost all endpoints accept optional parameters which can be passed as an HTTP query string parameter, e.g. `GET /getcustomquicktracking_V3?ref=invoices`
+
+Parameters containing special characters that are passed in a URL request must have their data url encoded.
+
+All parameters are documented along each endpoint.
+
+# Libraries
+We do not currently offer any libraries for our API implementation. We are in the process of creating .NET wrappers that you can use in the future. We will publish more information on this topic once it is ready for use.
+
+# Tools
+Some useful tools you can use to access the API's include:
+
+* <a href="https://insomnia.rest">Insomnia</a> - Cross-platform GraphQL and REST client, available for Mac, Windows, and Linux.
+* <a href="https://getpostman.com">Postman</a> - Cross-platform REST client, available for Mac, Windows, and Linux.
+* <a href="https://requestbin.com">RequestBin</a> - Allows you test webhooks.
+* <a href="https://hookbin.com">Hookbin</a> - Another tool to test webhooks.
+
+
+# Authentication
+Authentication against the BEX API ecosystem is a two-part process and is required to prevent access to confidential client data. The process involves the generation of your API security token which is described in the next section. This token is then included in the HTTP headers of your API calls and serves to identify and authenticate you on our platform.
+
+API’s that serve non-sensitive client data such as our quick waybill <a href="tracking">tracking</a> do not require your token to be present in the API call and can be called anonymously.
